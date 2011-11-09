@@ -9,7 +9,7 @@ vk = vkontakte.API('YOUR_APP_ID', 'YOUR_APP_SECRET')
 
 @app.route('/')
 def home():
-	return '<a href="http://api.vkontakte.ru/oauth/authorize?client_id=YOUR_APP_ID&scope=photos,friends&redirect_uri=YOUR_RETURN_URL&response_type=code">Authorize me!</a>'
+	return '<a href="http://api.vkontakte.ru/oauth/authorize?client_id=YOUR_APP_ID&scope=PERMISSIONS&redirect_uri=YOUR_RETURN_URL&response_type=code">Authorize me!</a>'
 
 @app.route('/success/')
 def test():
