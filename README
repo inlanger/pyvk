@@ -1,0 +1,27 @@
+HOW TO USE
+=================================================
+
+import vkontakte
+vk = vkontakte.API('my_api_id', 'my_api_secret')
+print vk.getServerTime()
+
+HOW TO AUTHORIZE YOUR WEB APP (bottle.py application as example)
+=================================================
+1) User must go to this link
+<a href="http://api.vkontakte.ru/oauth/authorize?client_id=YOUR_APP_ID&scope=photos,friends&redirect_uri=YOUR_RETURN_URL&response_type=code">Authorize me!</a>
+
+2) You must to store response CODE on your YOUR_RETURN_URL and receive your ACCESS_TOKEN to your application
+code = request.GET.get('code')
+get = http.get('https://api.vkontakte.ru/oauth/access_token?client_id= YOUR_APP_ID&client_secret=YOUR_APP_SECRET&code=' + code,  1)
+json_obj = json.loads(get)
+access_token = json_obj['access_token']
+
+3) You can store ACCESS_TOKEN to client cookies
+response.set_cookie("access_token", access_token)
+
+4) Now you can make requests to vkontakte secured area
+photos = vk.get('photos.getAlbums', uid='4563348', access_token = access_token)
+
+TROUBLES
+=================================================
+If you have any trouble or bug report - please, write me e-mail or direct message!
