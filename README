@@ -2,17 +2,17 @@ HOW TO USE
 =================================================
 
 import vkontakte
-vk = vkontakte.API('my_api_id', 'my_api_secret')
+vk = vkontakte.API('YOUR_APP_ID', 'YOUR_APP_SECRET')
 print vk.getServerTime()
 
 HOW TO AUTHORIZE YOUR WEB APP (bottle.py application as example)
 =================================================
-1) User must go to this link and add PERMISSIONS (from this page http://goo.gl/mj4zg)
+1) User must go to this link (You need to feel PERMISSIONS from this page http://goo.gl/mj4zg)
 <a href="http://api.vkontakte.ru/oauth/authorize?client_id=YOUR_APP_ID&scope=PERMISSIONS&redirect_uri=YOUR_RETURN_URL&response_type=code">Authorize me!</a>
 
 2) You must to store response CODE on your YOUR_RETURN_URL and receive your ACCESS_TOKEN to your application
 code = request.GET.get('code')
-get = http.get('https://api.vkontakte.ru/oauth/access_token?client_id= YOUR_APP_ID&client_secret=YOUR_APP_SECRET&code=' + code,  1)
+get = http.get('https://api.vkontakte.ru/oauth/access_token?client_id=YOUR_APP_ID&client_secret=YOUR_APP_SECRET&code=' + code,  1)
 json_obj = json.loads(get)
 access_token = json_obj['access_token']
 
